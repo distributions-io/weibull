@@ -2,7 +2,9 @@ Weibull
 ===
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Dependencies][dependencies-image]][dependencies-url]
 
-> Weibull distribution.
+> [Weibull](https://en.wikipedia.org/wiki/Weibull_distribution) distribution.
+
+[insert description]
 
 
 ## Installation
@@ -17,103 +19,159 @@ For use in the browser, use [browserify](https://github.com/substack/node-browse
 ## Usage
 
 ``` javascript
-var createDist = require( 'distributions-weibull' );
+var weibull = require( 'distributions-weibull' );
 ```
 
-To create a Weibull distribution,
+<a name="weibull"></a>
+#### weibull( [options] )
+
+To create a [Weibull]() distribution,
 
 ``` javascript
-var dist = createDist();
+var dist = weibull();
 ```
 
-The constructor function takes two input arguments, `lambda` and `k`, the shape and scale parameters of the Weibull distribution. By default, a distribution with `lambda = 1` and `k = 1` is created.
+The function accepts the following `options`:
 
-The distribution is configurable and has the following methods...
+*	__lambda__: [scale]() parameter. Default: `1`.
+*	__k__: [shape]() parameter. Default: `1`.
 
-
-#### dist.support()
-
-Returns the distribution support, which is all numbers in the interval `(0,∞)`.
+To specify a [scale]() parameter, set the `lambda` option.
 
 ``` javascript
-var support = dist.support();
-// returns [ 0,+Infinity ]
+var dist = weibull({
+	'lambda': 2
+});
 ```
 
-
-#### dist.lambda( [value] )
-
-This method is a setter/getter. If no `value` is provided, returns the shape parameter `lambda`. To set `lambda`,
+To specify a [shape]() parameter, set the `k` option.
 
 ``` javascript
-dist.lambda( 10 );
+var dist = weibull({
+	'k': 5
+});
 ```
 
-The default shape parameter is 1.
+---
+## Properties
 
-#### dist.k( [value] )
+A [`Weibull`]() distribution has the following properties...
 
-This method is a setter/getter. If no `value` is provided, returns the scale parameter `k`. To set `k`,
+<a name="weibull-lambda" class="scale"></a>
+#### lambda
+
+[Scale]() parameter.
 
 ``` javascript
-dist.k( 100 );
+// Get:
+var lambda = dist.lambda;
+// returns <number>
+
+// Set:
+dist.lambda = 0.5;
 ```
 
-The default scale parameter is 1.
+<a name="weibull-k" class="shape"></a>
+#### k
 
-#### dist.mean()
-
-Returns the distribution `mean`.
+[Shape]() parameter.
 
 ``` javascript
-var mean = dist.mean();
+// Get:
+var k = dist.k;
+// returns <number>
+
+// Set:
+dist.k = 3;
 ```
 
+<a name="weibull-support" class="read-only-property"></a>
+#### support
 
-#### dist.variance()
-
-Returns the distribution `variance`.
+A __read-only__ property returning the distribution [support]().
 
 ``` javascript
-var variance = dist.variance();
+var support = dist.support;
+// returns [ 0, +infinity ]
 ```
 
+<a name="weibull-mean" class="read-only-property"></a>
+#### mean
 
-#### dist.median()
-
-Returns the distribution `median`.
+A __read-only__ property returning the distribution [mean]().
 
 ``` javascript
-var median = dist.median();
+var mean = dist.mean;
+// returns <number>
 ```
 
-#### dist.skewness()
+<a name="weibull-variance" class="read-only-property"></a>
+#### variance
 
-Returns the distribution `skewness`.
+A __read-only__ property returning the distribution [variance]().
 
 ``` javascript
-var skewness = dist.skewness();
+var variance = dist.variance;
+// returns <number>
 ```
 
-#### dist.ekurtosis()
+<a name="weibull-median" class="read-only-property"></a>
+#### median
 
-Returns the distribution `excess kurtosis`.
+A __read-only__ property returning the distribution [median]().
 
 ``` javascript
-var excess = dist.ekurtosis();
+var median = dist.median;
+// returns <number>
 ```
 
-#### dist.entropy()
+<a name="weibull-skewness" class="read-only-property"></a>
+#### skewness
 
-Returns the distribution's [differential entropy](http://en.wikipedia.org/wiki/Differential_entropy).
+A __read-only__ property returning the distribution [skewness]().
+
+[insert eqn (if applicable)]
 
 ``` javascript
-var entropy = dist.entropy();
+var skewness = dist.skewness;
+// returns <number>
 ```
+
+<a name="weibull-ekurtosis" class="read-only-property"></a>
+#### ekurtosis
+
+A __read-only__ property returning the distribution [excess kurtosis]().
+
+[insert eqn (if applicable)]
+
+``` javascript
+var excess = dist.ekurtosis;
+// returns <number>
+```
+
+<a name="weibull-entropy" class="read-only-property"></a>
+#### entropy
+
+A __read-only__ property returning the distribution's [differential entropy](http://en.wikipedia.org/wiki/Differential_entropy).
+
+[insert eqn (if applicable)]
+
+``` javascript
+var entropy = dist.entropy;
+// returns <number>
+``` 
+
+---
+## Methods
+
+A `Weibull` distribution has the following methods...
+
 
 #### dist.pdf( [x] )
 
 If no argument is provided, returns the probability density function (PDF). If a [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), an [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), a [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays), or a [`matrix`](https://github.com/dstructs/matrix) is provided, evaluates the PDF for each element.
+
+[insert eqn]
 
 ``` javascript
 var data = [ 0, 0.2, 0.5, 0.8 ];
@@ -126,6 +184,7 @@ var pdf = dist.pdf( data );
 
 If no argument is provided, returns the cumulative distribution function (CDF). If a [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), an [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), a [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays), or a [`matrix`](https://github.com/dstructs/matrix) is provided, evaluates the CDF for each element.
 
+[insert eqn]
 
 ``` javascript
 var data = [ 0, 0.2, 0.5, 0.8 ];
@@ -137,7 +196,9 @@ var cdf = dist.cdf( data );
 
 #### dist.quantile( [p] )
 
-If no argument is provided, returns the inverse cumulative distribution (quantile) function. If a [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), an [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), a [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays), or a [`matrix`](https://github.com/dstructs/matrix) of probabilities is provided, evaluates the quantile function for each element.
+If no argument is provided, returns the inverse cumulative distribution (quantile) function. If a [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), an [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), a [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays), or a [`matrix`](https://github.com/dstructs/matrix) is provided, evaluates the quantile function for each element.
+
+[insert eqn]
 
 ``` javascript
 var probs = [ 0.025, 0.5, 0.975 ];
@@ -146,17 +207,25 @@ var quantiles = dist.quantile( probs );
 // returns [...]
 ```
 
-Note: all values must exist on the interval `[0, 1]`. The function returns `NaN` for a value not satisfying this condition.
+__Note__: all values must exist on the interval `[0,1]`; otherwise, the evaluated value is `NaN`.
+
 
 #### dist.mgf( [t] )
 
-If no argument is provided, returns the moment generating function (MGF) of the distribution. If a [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), an [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), a [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays), or a [`matrix`](https://github.com/dstructs/matrix) is provided, evaluates the MGF for each input element.
+If no argument is provided, returns the distribution's moment generating function (MGF). If a [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), an [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), a [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays), or a [`matrix`](https://github.com/dstructs/matrix) is provided, evaluates the MGF for each input element.
+
+[insert eqn]
+
+``` javascript
+(TODO)
+```
 
 
+---
 ## Examples
 
 ``` javascript
-var createDist = require( 'distributions-weibull' );
+var weibull = require( 'distributions-weibull' );
 
 // Define the distribution parameters...
 var lambda = 10,
@@ -171,7 +240,10 @@ for ( var i = 0; i < len; i++ ) {
 }
 
 // Create a Weibull distribution and configure...
-var dist = createDist( lambda, k );
+var dist = weibull({
+	'lambda': lambda,
+	'k': k
+});
 
 // Evaluate the probability density function over the vector...
 var pdf = dist.pdf( vec );
@@ -194,7 +266,7 @@ To run the example code from the top-level application directory,
 $ node ./examples/index.js
 ```
 
-
+---
 ## Tests
 
 ### Unit
@@ -231,7 +303,7 @@ $ open reports/coverage/lcov-report/index.html
 
 ## Copyright
 
-Copyright &copy; 2015. The [Distributions.io](https://github.com/distributions-io) Authors.
+Copyright &copy; 2015. The [Compute.io](https://github.com/compute-io) Authors.
 
 [npm-image]: http://img.shields.io/npm/v/distributions-weibull.svg
 [npm-url]: https://npmjs.org/package/distributions-weibull
