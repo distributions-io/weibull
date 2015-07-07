@@ -25,7 +25,7 @@ var weibull = require( 'distributions-weibull' );
 <a name="weibull"></a>
 #### weibull( [options] )
 
-To create a [Weibull]() distribution,
+To create a [Weibull](https://en.wikipedia.org/wiki/Weibull_distribution) distribution,
 
 ``` javascript
 var dist = weibull();
@@ -55,7 +55,7 @@ var dist = weibull({
 ---
 ## Properties
 
-A [`Weibull`]() distribution has the following properties...
+A [`Weibull`](https://en.wikipedia.org/wiki/Weibull_distribution) distribution has the following properties...
 
 <a name="weibull-lambda" class="scale"></a>
 #### lambda
@@ -88,7 +88,7 @@ dist.k = 3;
 <a name="weibull-support" class="read-only-property"></a>
 #### support
 
-A __read-only__ property returning the distribution [support]().
+A __read-only__ property returning the distribution [support](https://github.com/distributions-io/weibull-support).
 
 ``` javascript
 var support = dist.support;
@@ -98,7 +98,7 @@ var support = dist.support;
 <a name="weibull-mean" class="read-only-property"></a>
 #### mean
 
-A __read-only__ property returning the distribution [mean]().
+A __read-only__ property returning the distribution [mean](https://github.com/distributions-io/weibull-mean).
 
 ``` javascript
 var mean = dist.mean;
@@ -108,7 +108,7 @@ var mean = dist.mean;
 <a name="weibull-variance" class="read-only-property"></a>
 #### variance
 
-A __read-only__ property returning the distribution [variance]().
+A __read-only__ property returning the distribution [variance](https://github.com/distributions-io/weibull-variance).
 
 ``` javascript
 var variance = dist.variance;
@@ -118,7 +118,7 @@ var variance = dist.variance;
 <a name="weibull-median" class="read-only-property"></a>
 #### median
 
-A __read-only__ property returning the distribution [median]().
+A __read-only__ property returning the distribution [median](https://github.com/distributions-io/weibull-median).
 
 ``` javascript
 var median = dist.median;
@@ -128,7 +128,7 @@ var median = dist.median;
 <a name="weibull-skewness" class="read-only-property"></a>
 #### skewness
 
-A __read-only__ property returning the distribution [skewness]().
+A __read-only__ property returning the distribution [skewness](https://github.com/distributions-io/weibull-skewness).
 
 [insert eqn (if applicable)]
 
@@ -140,7 +140,7 @@ var skewness = dist.skewness;
 <a name="weibull-ekurtosis" class="read-only-property"></a>
 #### ekurtosis
 
-A __read-only__ property returning the distribution [excess kurtosis]().
+A __read-only__ property returning the distribution [excess kurtosis](https://github.com/distributions-io/weibull-ekurtosis).
 
 [insert eqn (if applicable)]
 
@@ -152,7 +152,7 @@ var excess = dist.ekurtosis;
 <a name="weibull-entropy" class="read-only-property"></a>
 #### entropy
 
-A __read-only__ property returning the distribution's [differential entropy](http://en.wikipedia.org/wiki/Differential_entropy).
+A __read-only__ property returning the distribution's [differential entropy](https://github.com/distributions-io/weibull-entropy).
 
 [insert eqn (if applicable)]
 
@@ -164,12 +164,18 @@ var entropy = dist.entropy;
 ---
 ## Methods
 
-A `Weibull` distribution has the following methods...
+A [`Weibull`](https://en.wikipedia.org/wiki/Weibull_distribution) distribution has the following methods, each of which accepts the following `options`:
+
+* 	__accessor__: accessor `function` for accessing `array` values.
+* 	__dtype__: output [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays) or [`matrix`](https://github.com/dstructs/matrix) data type. Default: `float64`.
+*	__copy__: `boolean` indicating if the `function` should return a new data structure. Default: `true`.
+*	__path__: [deepget](https://github.com/kgryte/utils-deep-get)/[deepset](https://github.com/kgryte/utils-deep-set) key path.
+*	__sep__: [deepget](https://github.com/kgryte/utils-deep-get)/[deepset](https://github.com/kgryte/utils-deep-set) key path separator. Default: `'.'`.
 
 
-#### dist.pdf( [x] )
+#### dist.pdf( x[, options] )
 
-If no argument is provided, returns the probability density function (PDF). If a [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), an [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), a [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays), or a [`matrix`](https://github.com/dstructs/matrix) is provided, evaluates the PDF for each element.
+Evaluates the [probability density function](https://github.com/distributions-io/weibull-pdf) (PDF). `x` may be either a [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), an [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), a [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays), or a [`matrix`](https://github.com/dstructs/matrix).
 
 [insert eqn]
 
@@ -180,9 +186,9 @@ var pdf = dist.pdf( data );
 // returns [...]
 ```
 
-#### dist.cdf( [x] )
+#### dist.cdf( x[, options] )
 
-If no argument is provided, returns the cumulative distribution function (CDF). If a [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), an [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), a [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays), or a [`matrix`](https://github.com/dstructs/matrix) is provided, evaluates the CDF for each element.
+Evaluates the [cumulative distribution function](https://github.com/distributions-io/weibull-cdf) (CDF). `x` may be either a [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), an [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), a [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays), or a [`matrix`](https://github.com/dstructs/matrix).
 
 [insert eqn]
 
@@ -194,9 +200,9 @@ var cdf = dist.cdf( data );
 ```
 
 
-#### dist.quantile( [p] )
+#### dist.quantile( p[, options] )
 
-If no argument is provided, returns the inverse cumulative distribution (quantile) function. If a [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), an [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), a [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays), or a [`matrix`](https://github.com/dstructs/matrix) is provided, evaluates the quantile function for each element.
+Evaluates the inverse cumulative distribution ([quantile](https://github.com/distributions-io/weibull-quantile)) function. `p` may be either a [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), an [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), a [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays), or a [`matrix`](https://github.com/dstructs/matrix).
 
 [insert eqn]
 
@@ -207,18 +213,20 @@ var quantiles = dist.quantile( probs );
 // returns [...]
 ```
 
-__Note__: all values must exist on the interval `[0,1]`; otherwise, the evaluated value is `NaN`.
+__Note__: all probabilities `p` must exist on the interval `[0,1]`.
 
 
-#### dist.mgf( [t] )
+#### dist.mgf( t[, options] )
 
-If no argument is provided, returns the distribution's moment generating function (MGF). If a [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), an [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), a [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays), or a [`matrix`](https://github.com/dstructs/matrix) is provided, evaluates the MGF for each input element.
+Evaluates the [moment generating function](https://github.com/distributions-io/weibull-mgf) (MGF). `t` may be either a [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), an [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), a [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays), or a [`matrix`](https://github.com/dstructs/matrix).
 
 [insert eqn]
 
 ``` javascript
 (TODO)
 ```
+
+__Note__: the [MGF](https://github.com/distributions-io/weibull-mgf) only exists for `k >= 1`.
 
 
 ---
