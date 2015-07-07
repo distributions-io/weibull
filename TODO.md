@@ -29,5 +29,5 @@ TODO
 	-	mean
 	-	median
 	-	variance
-	-	etc
+	-	...
 15. 
