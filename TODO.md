@@ -30,4 +30,7 @@ TODO
 	-	median
 	-	variance
 	-	...
-15. 
+15. allow for truncation?
+	-	isTruncated
+	-	truncation interval
+16. 

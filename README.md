@@ -57,6 +57,46 @@ var dist = weibull({
 
 A [`Weibull`](https://en.wikipedia.org/wiki/Weibull_distribution) distribution has the following properties...
 
+<a name="weibull-name"></a>
+#### name
+
+Distribution name.
+
+``` javascript
+var name = dist.name;
+// returns 'Weibull'
+```
+
+<a name="weibull-numparams"></a>
+#### numparams
+
+Number of distribution parameters.
+
+``` javascript
+var n = dist.numparams;
+// returns 2
+```
+
+<a name="weibull-pnames"></a>
+#### pnames
+
+Parameter names.
+
+``` javascript
+var pnames = dist.pnames;
+// returns ['lambda','k']
+```
+
+<a name="weibull-pdesc"></a>
+#### pdesc
+
+Distribution parameter descriptions.
+
+``` javascript
+var desc = dist.pdesc;
+// returns {'lambda': '...', 'k': '...'}
+```
+
 <a name="weibull-lambda" class="scale"></a>
 #### lambda
 
